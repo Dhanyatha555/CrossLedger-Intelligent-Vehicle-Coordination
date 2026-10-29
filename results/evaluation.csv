@@ -1,0 +1,9 @@
+scenario,description,passed,detail,messages_sent,messages_received,delivery_success_rate,avg_latency_ms_simulated,max_latency_ms_simulated,position_rmse_m,conflict_detection_correct_rate,conflict_samples,unsafe_proceed_count,alert_response_s,auth_rejected,replay_rejected,latency_source
+non_conflicting_paths,Both vehicles turn right; offset lanes do not intersect.,True,"truth conflicts=0, both-proceed-when-fresh=True",160,158,0.9875,100.0,100.0,0.5678,1.0,79,0,,0,0,simulated_in_process_channel
+safe_crossing_separated,Crossing paths with arrival windows separated beyond the safety margin.,True,"geometric=True, temporal conflicts=0",120,118,0.9833,100.0,100.0,0.5621,1.0,59,0,,0,0,simulated_in_process_channel
+simultaneous_conflicting_arrivals,Equal ETA crossing; exactly one vehicle may proceed.,True,"conflict_ticks=80, double_proceed=0",160,158,0.9875,100.633,200.0,0.5411,1.0,79,0,0.0,0,0,simulated_in_process_channel
+sudden_stop,Peer stops in the crossing; coordinator must HOLD both vehicles.,True,hold_ticks_after_stop=29,104,102,0.9808,100.0,100.0,0.6414,1.0,51,0,0.0,0,0,simulated_in_process_channel
+stale_or_missing_telemetry,Simulated delay exceeds the freshness window; vehicles HOLD.,True,"hold_ticks=17, mean_latency=1.6s (simulated)",80,47,0.5875,1640.426,1700.0,0.585,1.0,23,0,0.0,0,0,simulated_in_process_channel
+packet_loss_and_delay,High simulated loss causes missing telemetry and conservative HOLD.,True,"delivery_success=13.00%, hold_ticks=40",100,13,0.13,100.0,100.0,0.4656,,0,0,0.0,0,0,simulated_in_process_channel
+invalid_authentication,Tampered frame is rejected by HMAC-SHA256.,True,mac_rejections=1,32,29,0.9062,100.0,100.0,0.5132,1.0,15,0,0.0,1,0,simulated_in_process_channel
+replayed_messages,Replayed sequence numbers are rejected.,True,replay_rejections=1,30,27,0.9,100.0,100.0,0.5985,1.0,14,0,0.0,0,1,simulated_in_process_channel
